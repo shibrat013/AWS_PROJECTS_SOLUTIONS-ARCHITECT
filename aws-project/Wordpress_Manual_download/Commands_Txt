@@ -7,8 +7,8 @@
 # STEP 1 - Configure Authentication Variables which are used below
 DBName='a4lwordpress'
 DBUser='a4lwordpress'
-DBPassword='REMOVED_SECRET'
-DBRootPassword='REMOVED_SECRET'
+DBPassword='YOUR_DATABASE_PASSWORD_HERE'
+DBRootPassword='YOUR_ROOT_PASSWORD_HERE'
 
 # STEP 2 - Install system software - including Web and DB
 sudo dnf install wget php-mysqlnd httpd php-fpm php-mysqli mariadb105-server php-json php php-devel -y
