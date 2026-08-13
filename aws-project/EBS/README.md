@@ -2,97 +2,43 @@
 
 ## Project Overview
 
-This project demonstrates how to use an Amazon Elastic Block Store (EBS) volume with an Amazon EC2 instance. The lab focused on attaching an EBS volume, formatting it with XFS, mounting it, storing data, and configuring the mount to persist after a reboot.
+This project demonstrates Amazon Elastic Block Store (EBS) with Amazon EC2. The lab covered creating and attaching an EBS volume, formatting it with XFS, mounting it to an EC2 instance, storing data, configuring persistent mounting, and working with the volume from additional EC2 instances.
+
+The lab also included additional EBS volume and snapshot exercises.
 
 ## Objectives
 
-- Identify attached block devices
+- Identify attached block devices on an EC2 instance
 - Inspect an EBS volume
 - Format an EBS volume using XFS
 - Mount an EBS volume to a directory
-- Store data on the volume
-- Verify data persistence after an EC2 reboot
-- Configure persistent mounting using /etc/fstab
-- Identify an EBS volume using its UUID
+- Store and verify data on the volume
+- Configure persistent mounting using `/etc/fstab`
+- Identify a filesystem using its UUID
+- Verify EBS data persistence after an EC2 reboot
+- Understand how an EBS volume can be detached and used with another EC2 instance
+- Explore EBS snapshot and volume workflows
 
 ## AWS Services Used
 
 - Amazon EC2
 - Amazon EBS
 
-## Implementation
-
-### 1. Identify the EBS Volume
-
-```bash
-lsblk
-sudo file -s /dev/nvme1n1
-```
-
-### 2. Create an XFS Filesystem
-
-```bash
-sudo mkfs -t xfs /dev/nvme1n1
-```
-
-### 3. Mount the Volume
-
-```bash
-sudo mkdir /ebstest
-sudo mount /dev/nvme1n1 /ebstest
-cd /ebstest
-```
-
-A test file was created on the EBS volume to verify that data could be stored.
-
-### 4. Test Persistence After Reboot
-
-The EC2 instance was rebooted and the filesystem and UUID were checked.
-
-```bash
-sudo reboot
-df -k
-sudo blkid
-```
-
-The volume was configured in /etc/fstab using its UUID:
+## Architecture
 
 ```text
-UUID=YOUR_UUID_HERE /ebstest xfs defaults,nofail
-```
+                    Amazon EC2
+                        │
+                        │
+                 Amazon EBS Volume
+                        │
+                        ▼
+                    /ebstest
+                        │
+                        ▼
+              amazingtestfile.txt
 
-The configuration was tested with:
+Then **only run**:
 
 ```bash
-sudo mount -a
-```
-
-## Test Result
-
-The lab demonstrated that an EBS volume provides persistent block storage that can remain available independently of an EC2 instance reboot when correctly configured and mounted.
-
-## What I Learned
-
-- EBS provides persistent block-level storage for EC2.
-- An attached EBS volume is not automatically mounted.
-- A filesystem such as XFS must be created before normal use.
-- A mount point makes the filesystem accessible to the operating system.
-- /etc/fstab can configure automatic mounting.
-- Filesystem UUIDs provide a persistent way to identify the filesystem.
-
-## Screenshots
-
-Screenshots from the lab are stored in the AWS_screenshot directory.
-
-## Possible Extensions
-
-- EBS snapshots
-- Restoring volumes from snapshots
-- EBS encryption with AWS KMS
-- Comparing EBS volume types
-- Increasing EBS volume size
-- Monitoring EBS with CloudWatch
-
-## Learning Context
-
-This project was completed as part of my hands-on preparation for the AWS Certified Solutions Architect – Associate certification.
+git status
