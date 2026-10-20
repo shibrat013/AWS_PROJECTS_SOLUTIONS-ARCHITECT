@@ -9,6 +9,7 @@ The projects focus on deploying, configuring, monitoring, and troubleshooting co
 | Project | AWS Services / Technologies | Skills Practiced |
 |---|---|---|
 | [ALB Sticky Sessions](./aws-alb-sticky-sessions/) | EC2, Application Load Balancer | Load balancing, target groups, health checks, session persistence |
+| [AWS Site-to-Site VPN with pfSense Plus](./aws-site-to-site-vpn-pfsense/) | VPC, EC2, AWS Site-to-Site VPN, pfSense Plus, IPsec | VPN tunnel configuration, private connectivity, tunnel status validation, network troubleshooting |
 | [EBS Storage](./EBS/) | EC2, EBS | Block storage, filesystems, mounting, persistence |
 | [Docker on EC2](./Docker/) | EC2, Docker | Container images, containers, port mapping |
 | [CloudWatch & Parameter Store](./cloudwatch_parameters_install/) | EC2, CloudWatch, IAM, SSM | Monitoring, log collection, configuration management |
@@ -19,6 +20,7 @@ The projects focus on deploying, configuring, monitoring, and troubleshooting co
 - Compute with Amazon EC2
 - Elastic Load Balancing
 - Amazon EBS block storage
+- AWS Site-to-Site VPN and IPsec
 - IAM roles and permissions
 - Amazon CloudWatch monitoring and logs
 - AWS Systems Manager Parameter Store
@@ -28,13 +30,13 @@ The projects focus on deploying, configuring, monitoring, and troubleshooting co
 
 ## Portfolio Approach
 
-These projects are documented with implementation notes, commands, architecture explanations, and screenshots where applicable.
+These projects are documented with implementation notes, commands, architecture explanations, validation results, and screenshots where applicable.
 
 The goal is to demonstrate practical understanding rather than simply listing AWS services.
 
 ## Security
 
-No real passwords, access keys, or other credentials should be stored in this repository. Secrets used during labs should be replaced with placeholders before committing files to Git.
+No real passwords, access keys, VPN pre-shared keys, private keys, or other credentials should be stored in this repository. Secrets used during labs should be replaced with placeholders before committing files to Git. Sanitize screenshots to remove account IDs, public IPs, instance IDs, and other identifying details.
 
 ## Learning Context
 
